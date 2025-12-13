@@ -101,6 +101,7 @@ Boxplot เพื่อตรวจสอบ outliers
 
 
 แสดงผลด้วย Heatmap
+<img width="855" height="447" alt="{EDAD1F67-2F1C-4635-A0FE-B46BFE1EFBF5}" src="https://github.com/user-attachments/assets/92c81b7a-9030-426c-b8d9-d9cd20f092c4" />
 
 
 ผลลัพธ์สำคัญ
