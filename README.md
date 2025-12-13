@@ -107,11 +107,14 @@ Boxplot เพื่อตรวจสอบ outliers
 
 <img width="331" height="506" alt="{645E33D3-8686-43CE-9A41-A32C1CE4FDA9}" src="https://github.com/user-attachments/assets/dedef551-9e12-4910-8ace-dd1eb39dc9ec" />
 
+Royalty Point Vs Churn 
 
 <img width="312" height="359" alt="image" src="https://github.com/user-attachments/assets/7bb42336-dcfc-462a-9dc9-61729f634f43" />
+
 จากการวิเคราะห์ Loyalty Points พบว่า Active และ Inactive มีค่าเฉลี่ยใกล้เคียงกันมาก
 (249 vs 251) แสดงว่า Loyalty Points ไม่ได้มีความสัมพันธ์ชัดเจนกับการ Churn
 จึงไม่ใช่ปัจจัยสำคัญในการตัดสินว่าลูกค้าจะเลิกใช้บริการหรือไม่
+
 
 ผลลัพธ์สำคัญ
 quantity ↔ price : ความสัมพันธ์เชิงบวก
