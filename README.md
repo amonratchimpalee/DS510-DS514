@@ -91,7 +91,8 @@ https://www.kaggle.com/datasets/nabihazahid/foodpanda-analysis-dataset-2025
 ข้อมูลแสดงให้เห็นความแตกต่างของพฤติกรรมการใช้จ่าย และพบว่าตัวแปร days_since_last_order มีค่าเฉลี่ยสูง ซึ่งสะท้อนถึงความเสี่ยงในการเกิด churn
 
 
-```from scipy.stats import norm
+```python
+from scipy.stats import norm
 
 # ค่าเฉลี่ยและส่วนเบี่ยงเบน
 mean_active = active_sales.mean()
@@ -136,8 +137,7 @@ plt.title('T-Test Explanation: Sampling Distribution of Mean Price')
 plt.xlabel('Mean Price')
 plt.ylabel('Density')
 plt.legend()
-plt.show()```
-
+plt.show()**
 
 
 
