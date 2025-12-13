@@ -136,7 +136,7 @@ plt.title('T-Test Explanation: Sampling Distribution of Mean Price')
 plt.xlabel('Mean Price')
 plt.ylabel('Density')
 plt.legend()
-plt.show()
+plt.show()```
 
 
 
