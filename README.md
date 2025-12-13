@@ -104,7 +104,8 @@ Boxplot เพื่อตรวจสอบ outliers
 <img width="855" height="447" alt="{EDAD1F67-2F1C-4635-A0FE-B46BFE1EFBF5}" src="https://github.com/user-attachments/assets/92c81b7a-9030-426c-b8d9-d9cd20f092c4" />
 
 การแสดงยอดการ Churn แยกตามปี
-<img width="358" height="512" alt="{3BBCF563-A33E-472D-90F9-E08FD751B39C}" src="https://github.com/user-attachments/assets/1712d118-ce38-48db-be6b-7f49193faec5" />
+<img width="331" height="506" alt="{645E33D3-8686-43CE-9A41-A32C1CE4FDA9}" src="https://github.com/user-attachments/assets/dedef551-9e12-4910-8ace-dd1eb39dc9ec" />
+
 
 ผลลัพธ์สำคัญ
 quantity ↔ price : ความสัมพันธ์เชิงบวก
