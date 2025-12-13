@@ -1,4 +1,4 @@
-# DS510-DS514
+# DS512-DS513
 FoodPanda: วิเคราะห์ข้อมูลลูกค้า, Churn และการทำนายด้วย Machine Learning
 โปรเจกต์นี้เป็นงาน Exploratory Data Analysis (EDA) + Statistical Testing + Machine Learning
  โดยใช้ข้อมูลแพลตฟอร์ม Food Delivery (FoodPanda-like dataset) เพื่อศึกษาพฤติกรรมลูกค้า
