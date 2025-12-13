@@ -92,4 +92,51 @@ https://www.kaggle.com/datasets/nabihazahid/foodpanda-analysis-dataset-2025
 
 
 
+```from scipy.stats import norm
+
+# ค่าเฉลี่ยและส่วนเบี่ยงเบน
+mean_active = active_sales.mean()
+mean_inactive = inactive_sales.mean()
+
+std_active = active_sales.std()
+std_inactive = inactive_sales.std()
+
+n_active = active_sales.shape[0]
+n_inactive = inactive_sales.shape[0]
+
+# Standard Error
+se_active = std_active / np.sqrt(n_active)
+se_inactive = std_inactive / np.sqrt(n_inactive);
+
+# ===============================
+# สร้างแกน x สำหรับกราฟ
+# ===============================
+x_min = min(mean_active - 4*se_active, mean_inactive - 4*se_inactive)
+x_max = max(mean_active + 4*se_active, mean_inactive + 4*se_inactive)
+x = np.linspace(x_min, x_max, 500)
+
+# ===============================
+# Normal Distribution
+# ===============================
+y_active = norm.pdf(x, mean_active, se_active)
+y_inactive = norm.pdf(x, mean_inactive, se_inactive)
+
+# ===============================
+# Plot
+# ===============================
+plt.figure(figsize=(8,5))
+
+plt.plot(x, y_active, label='Active (Sampling Distribution)')
+plt.plot(x, y_inactive, label='Inactive (Sampling Distribution)')
+
+# เส้นค่าเฉลี่ย
+plt.axvline(mean_active, linestyle='--', label='Active Mean')
+plt.axvline(mean_inactive, linestyle='--', label='Inactive Mean')
+
+plt.title('T-Test Explanation: Sampling Distribution of Mean Price')
+plt.xlabel('Mean Price')
+plt.ylabel('Density')
+plt.legend()
+plt.show()```
+
 
