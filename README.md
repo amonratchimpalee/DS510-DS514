@@ -143,7 +143,7 @@ plt.show()
 
 <img width="730" height="324" alt="{AF1CC214-1CFC-43A2-ABAE-271CF1016DD9}" src="https://github.com/user-attachments/assets/d3c01756-f4e3-4d63-b23c-69d8494941b0" />
 
-
+```text
 The Test 
 การทดสอบนี้ใช้ Independent two-sample, two-tailed t-test
 
