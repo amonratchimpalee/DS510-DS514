@@ -92,7 +92,7 @@ https://www.kaggle.com/datasets/nabihazahid/foodpanda-analysis-dataset-2025
 
 ---
 
-<img width="730" height="324" alt="{AF1CC214-1CFC-43A2-ABAE-271CF1016DD9}" src="https://github.com/user-attachments/assets/d3c01756-f4e3-4d63-b23c-69d8494941b0" />
+
 
 ```python
 from scipy.stats import norm
@@ -140,8 +140,8 @@ plt.show()
 ```
 
 ---
+<img width="730" height="324" alt="{AF1CC214-1CFC-43A2-ABAE-271CF1016DD9}" src="https://github.com/user-attachments/assets/d3c01756-f4e3-4d63-b23c-69d8494941b0" />
 
-```text
 The Test 
 การทดสอบนี้ใช้ Independent two-sample, two-tailed t-test
 
@@ -156,7 +156,9 @@ P-value: 0.4255293665108075
 เนื่องจาก p-value (0.426) > 0.05 จึงไม่ปฏิเสธ H₀ และไม่พบความแตกต่างของยอดขายเฉลี่ยระหว่างลูกค้า Active และ Inactive อย่างมีนัยสำคัญ
 
 Churn ไม่ได้ทำให้ยอดซื้อต่อออเดอร์แตกต่างอย่างมีนัยสำคัญ
-```
+
+
+
 
 
 
