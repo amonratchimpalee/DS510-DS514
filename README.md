@@ -166,7 +166,19 @@ sns.heatmap(corr, annot=True, cmap='coolwarm', fmt=".2f")
 plt.title("Correlation Heatmap of Numeric Features")
 plt.show()
 ```
-<img width="523" height="413" alt="{0B37EEBD-131E-41D4-BABE-B3EEEDE1B0A0}" src="https://github.com/user-attachments/assets/c27be37c-e744-4f59-b5c2-6de4bca015ad" />
+<img width="515" height="403" alt="{87984070-BD64-4254-AC00-4B2ECD79CE84}" src="https://github.com/user-attachments/assets/5c4355da-1279-4197-83a3-709e6f0727c4" />
+
+Correlation Heatmap (Numeric Features)
+ตัวแปรเชิงตัวเลขส่วนใหญ่มีค่า correlation ใกล้ 0
+quantity กับ price_per_item มีความสัมพันธ์เชิงลบสูง (≈ -0.66)
+price กับ price_per_item มีความสัมพันธ์เชิงบวกปานกลาง (≈ 0.58)
+ตัวแปรที่เกี่ยวข้องกับ churn (order_frequency, days_since_last_order, loyalty_points)
+ ไม่มีความสัมพันธ์เชิงเส้นที่ชัดเจนกับตัวแปรรายได้
+Insight
+พฤติกรรมการซื้อมีความซับซ้อนและไม่เป็นเชิงเส้น
+ลูกค้าที่สั่งจำนวนมากมักเลือกสินค้าราคาต่อชิ้นต่ำ
+มูลค่าการใช้จ่ายต่อออเดอร์ไม่ใช่ตัวขับเคลื่อนหลักของ churn
+Churn มีแนวโน้มถูกอธิบายได้ดีกว่าด้วยพฤติกรรมเชิงเวลาและความถี่ มากกว่ารายได้เพียงอย่างเดียว
 
 
 
