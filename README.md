@@ -180,5 +180,24 @@ Insight
 มูลค่าการใช้จ่ายต่อออเดอร์ไม่ใช่ตัวขับเคลื่อนหลักของ churn
 Churn มีแนวโน้มถูกอธิบายได้ดีกว่าด้วยพฤติกรรมเชิงเวลาและความถี่ มากกว่ารายได้เพียงอย่างเดียว
 
+<img width="755" height="237" alt="{4D3100A0-FB48-4F66-9BD5-0C1B75BBB874}" src="https://github.com/user-attachments/assets/9cf27620-d207-4848-9b96-d1caa9a51f11" />
+โมเดลทำนาย churn ทุกตัวให้ Accuracy ใกล้เคียงกัน (~55%)
+ → ความท้าทายไม่ใช่การทำนายให้ถูกโดยรวม แต่คือการ “จับลูกค้าที่กำลังจะหาย”
+Logistic Regression สามารถตรวจจับลูกค้าที่มีแนวโน้ม churn ได้ดีที่สุด
+ → พลาดลูกค้าน้อยที่สุดเมื่อเทียบกับโมเดลอื่น
+ → เหมาะกับการนำไปใช้เชิงปฏิบัติ เช่น CRM, Retention Campaign
+โมเดลที่ซับซ้อนกว่า (XGBoost, LightGBM) ไม่ได้สร้างความได้เปรียบเชิงธุรกิจเพิ่ม
+ → ต้นทุนความซับซ้อนสูงขึ้น แต่ผลลัพธ์ไม่ดีขึ้นตาม
+
+<img width="691" height="280" alt="{5B5A3C67-E46A-431F-AADA-3E54FF73CDC9}" src="https://github.com/user-attachments/assets/ae58e0bd-2f89-4310-aaa9-5445df23a99a" />
+<img width="671" height="311" alt="{235F3B09-3F59-450F-994D-A9E66BC71CE0}" src="https://github.com/user-attachments/assets/49f07194-d6b5-43e4-9da0-ad7099a30f6a" />
+<img width="667" height="267" alt="{F97EC9C4-533C-4AD2-8D63-64221A9D4F16}" src="https://github.com/user-attachments/assets/4bd036c3-424b-433e-acc9-36d5430f0934" />
+Predictive Results
+เปรียบเทียบ 4 โมเดล: Logistic Regression, Random Forest, XGBoost, LightGBM
+ทุกโมเดลให้ Accuracy ใกล้เคียงกัน (~55%)
+Logistic Regression ให้ผลดีที่สุด
+Accuracy, Recall (Churn=1) และ F1-score สูงสุด
+False Negative ต่ำสุด → ตรวจจับ churn ได้ดีที่สุด
+โมเดลที่ซับซ้อนกว่า ไม่เพิ่ม predictive power อย่างมีนัยสำคัญ
 
 
