@@ -35,7 +35,7 @@ https://www.kaggle.com/datasets/nabihazahid/foodpanda-analysis-dataset-2025
 
 
 
-
+---
 **ตัวแปรสำคัญ**
 
 
@@ -58,7 +58,7 @@ https://www.kaggle.com/datasets/nabihazahid/foodpanda-analysis-dataset-2025
 
 
 สถานะการจัดส่ง (delivery_status)
-
+---
 
 
 ** การตรวจสอบและทำความสะอาดข้อมูล**
