@@ -126,46 +126,12 @@ y_inactive = norm.pdf(x, mean_inactive, se_inactive)
 # Plot
 # ===============================
 plt.figure(figsize=(8,5))
-
 plt.plot(x, y_active, label='Active (Sampling Distribution)')
 plt.plot(x, y_inactive, label='Inactive (Sampling Distribution)')
-
-# เส้นค่าเฉลี่ย
 plt.axvline(mean_active, linestyle='--', label='Active Mean')
 plt.axvline(mean_inactive, linestyle='--', label='Inactive Mean')
-
 plt.title('T-Test Explanation: Sampling Distribution of Mean Price')
 plt.xlabel('Mean Price')
 plt.ylabel('Density')
 plt.legend()
 plt.show()
-***
-
-
-<img width="730" height="324" alt="{AF1CC214-1CFC-43A2-ABAE-271CF1016DD9}" src="https://github.com/user-attachments/assets/d3c01756-f4e3-4d63-b23c-69d8494941b0" />
-
-```text
-The Test 
-การทดสอบนี้ใช้ Independent two-sample, two-tailed t-test
-
-เพื่อเปรียบเทียบ ค่าเฉลี่ยยอดขาย (price) ระหว่างกลุ่มลูกค้า Active และ Inactive
-
-หากค่า p-value < α จะปฏิเสธ H₀
-
-The Result
-T-statistic: -0.7969206171066529
-P-value: 0.4255293665108075
-
-เนื่องจาก p-value (0.426) > 0.05 จึงไม่ปฏิเสธ H₀ และไม่พบความแตกต่างของยอดขายเฉลี่ยระหว่างลูกค้า Active และ Inactive อย่างมีนัยสำคัญ
-
-Churn ไม่ได้ทำให้ยอดซื้อต่อออเดอร์แตกต่างอย่างมีนัยสำคัญ
-
-
-<img width="523" height="408" alt="{2A0A4B21-AB49-4C55-AA38-C1DCA15866B0}" src="https://github.com/user-attachments/assets/d692fd4b-1253-4c66-9560-16947e36551a"/> 
-```
-
-
-
-
-
-
