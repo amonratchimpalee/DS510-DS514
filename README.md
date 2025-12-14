@@ -167,7 +167,7 @@ corr = numeric_cols.corr()
 plt.figure(figsize=(12, 8))
 sns.heatmap(corr, annot=True, cmap='coolwarm', fmt=".2f")
 plt.title("Correlation Heatmap of Numeric Features")
-plt.show()*
+plt.show()
 
 
 
