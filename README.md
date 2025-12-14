@@ -135,3 +135,5 @@ plt.xlabel('Mean Price')
 plt.ylabel('Density')
 plt.legend()
 plt.show()
+
+<img width="730" height="324" alt="Sampling Distribution" src="https://github.com/user-attachments/assets/d3c01756-f4e3-4d63-b23c-69d8494941b0" />
