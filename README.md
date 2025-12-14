@@ -3,7 +3,7 @@
 โปรเจกต์นี้เป็นงาน Exploratory Data Analysis (EDA) + Statistical Testing + Machine Learning
  โดยใช้ข้อมูลแพลตฟอร์ม Food Delivery (FoodPanda-like dataset) เพื่อศึกษาพฤติกรรมลูกค้า
  วิเคราะห์ปัจจัยที่ส่งผลต่อ Churn (การเลิกใช้งาน) และสร้างโมเดลทำนาย**
-
+---
  
 **- วัตถุประสงค์ของโครงงาน**
 วิเคราะห์รูปแบบการใช้จ่ายและพฤติกรรมการสั่งอาหาร
@@ -19,7 +19,7 @@
 
 
 สร้างโมเดล Logistic Regression  ,Random Forest ,XGBoost,LightGBM  เพื่อทำนายโอกาส Churn
-
+---
 
 
 **- ภาพรวมชุดข้อมูล**
