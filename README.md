@@ -1,207 +1,93 @@
+# การวิเคราะห์ข้อมูลลูกค้าที่ยกเลิก Food Panda เพื่อวางแผนการตลาดให้ตอบโจทย์กับปัญหาที่เจอ
+โครงการนี้สร้างโมเดลเชิงพยากรณ์เพื่อคาดการณ์ว่าลูกค้า Food Panda จะยกเลิกการใช้งานหรือไม่ (Churn) ซึ่งช่วยให้สามารถวางแผนความต้องการและกลยุทธ์ทางการตลาดได้อย่างมีประสิทธิภาพมากขึ้น
 
-**FoodPanda: วิเคราะห์ข้อมูลลูกค้า, Churn และการทำนายด้วย Machine Learning
-โปรเจกต์นี้เป็นงาน Exploratory Data Analysis (EDA) + Statistical Testing + Machine Learning
- โดยใช้ข้อมูลแพลตฟอร์ม Food Delivery (FoodPanda-like dataset) เพื่อศึกษาพฤติกรรมลูกค้า
- วิเคราะห์ปัจจัยที่ส่งผลต่อ Churn (การเลิกใช้งาน) และสร้างโมเดลทำนาย**
- 
- ---
-**- วัตถุประสงค์ของโครงงาน**
-วิเคราะห์รูปแบบการใช้จ่ายและพฤติกรรมการสั่งอาหาร
+## ภาพรวมชุดข้อมูล
 
-
-เปรียบเทียบความแตกต่างระหว่างลูกค้า Active vs Inactive (Churn)
-
-
-ทดสอบสมมติฐานเชิงสถิติ (T-test)
-
-
-คัดเลือก Feature สำคัญที่สัมพันธ์กับ Churn
-
-
-สร้างโมเดล Logistic Regression  ,Random Forest ,XGBoost,LightGBM  เพื่อทำนายโอกาส Churn
-
-
----
-**- ภาพรวมชุดข้อมูล**
-
-** แหล่งที่มาของข้อมูล **
+**แหล่งที่มาของข้อมูล  :** 
 https://www.kaggle.com/datasets/nabihazahid/foodpanda-analysis-dataset-2025 
 
 **จำนวนข้อมูล: 6,000 ออเดอร์**
 
 
 **จำนวนตัวแปร: 20 ตัวแปร**
+**-Description**
+
+
+ชุดข้อมูลการสั่งอาหารผ่านเพลตฟอร์ม Foodpanda จำนวน 6,000 รายการ ซึ่งประกอบด้วยข้อมูลของลูกค้า(ข้อมูลการสั่งอาหาร การชำระเงิน คะแนนรีวิว และรายละเอียดการจัดส่ง
+ในประเทศปากีสถาน
+
+
+**ตั้งแต่ระยะเวลา 22 สิงหาคม 2023 ถึง วันที่ 21 สิงหาคม 2025**
+
+### Data Dictionary
+
+
+
 <img width="1171" height="605" alt="image" src="https://github.com/user-attachments/assets/88460a82-6148-4d8f-9db3-4a4a35cf1199" />
 
 
 
----
-**ตัวแปรสำคัญ**
 
 
-ราคา (price), จำนวน (quantity)
+## ขั้นตอนการทำโมเดล
+**1.การนำเข้าข้อมูล**
+
+- ที่มา : Foodpanda Analysis Dataset จาก Kaggle ข้อมูลถูกนำเข้าในรูปแบบไฟล์ CSV
+- คอลัมน์ข้อมูลดิบที่สำคัญประกอบด้วย `customer_id`, `gender`, `age`, `city`, `signup_date`, `order_id`, `order_date`, `restaurant_name`, `dish_name`, `category`, `quantity`, `price`, `payment_method`, `order_frequency`, `last_order_date`, `loyalty_points`, `churned`, `rating`, `rating_date`, `delivery_status`
+
+- ขนาดข้อมูล **6000 รายการ** และ **20 คอลัมน์**
 
 
-ความถี่การสั่ง (order_frequency)
+**2.การตรวจสอบและทำความสะอาดข้อมูล**
+
+- ลบข้อมูลที่ไม่จำเป็นออก
+
+- ข้อมูลที่ซ้ำกัน (Duplicate records)
+
+- แถวที่มีค่าว่าง / ค่า NULL (ในกรณีที่เหมาะสม)
+
+- ตรวจสอบชนิดข้อมูลและค่า missing (ไม่พบ missing values)
+
+- แปลงประเภทข้อมูล (date → datetime, string → numeric)
+
+**3.(Feature Engineering & Selection)**
+
+ตัดตัวแปรที่ไม่จำเป็น
+
+`city`, `category`, `dish_name`,
+`payment_method`, `rating_date`, `gender`, `age`,
+`customer_id`, `order_id`, `signup_date`, `order_date`
 
 
-คะแนนสะสม (loyalty_points)
+เพิ่ม Feature Engineering
 
 
-ระยะห่างจากการสั่งล่าสุด (days_since_last_order)
+`avg_price_per_unit` =`price` / `quantity`
 
+`is_repeat_customer` =`order_frequency`> 1
 
-สถานะลูกค้า (churned: Active / Inactive)
+`high_loyalty`=(`loyalty_points` >= `loyalty_points`.median()).astype(int)
 
+`customer_tenure_days` = `order_date`- `signup_date`
 
-คะแนนรีวิว (rating)
+`is_high_value_order`= `price` > `price`.median()).astype(int)
 
+`is_delivered` = `delivery_status` == 'Delivered').astype(int)
 
-สถานะการจัดส่ง (delivery_status)
+`is_failed_delivery` = `delivery_status` != 'Delivered').astype(int)
 
+กำหนดตัวแปรเป้าหมาย  **Target**  = `churned`
 
----
-**การตรวจสอบและทำความสะอาดข้อมูล**
-
-
-ตรวจสอบชนิดข้อมูลและค่า missing (ไม่พบ missing values)
-
-
-จัดการค่า Null
-
-
-ลบ duplicates
-
-
-แปลงประเภทข้อมูล (date → datetime, string → numeric)
-
-
-เตรียมข้อมูลให้อยู่ในรูปแบบพร้อมวิเคราะห์และทำโมเดล
-
-
----
-**Descriptive Statistics**
-
-**ผลสถิติพื้นฐานของตัวแปรเชิงตัวเลข: **
-
-<img width="359" height="290" alt="{BE2B4D9B-3322-4F92-96AA-A8E6BC66FA5F}" src="https://github.com/user-attachments/assets/aebc4cbd-a0d0-49d8-97c1-eb620aeae2d2" />
-
-
-จากการวิเคราะห์สถิติเชิงพรรณนา พบว่าลูกค้าส่วนใหญ่มักสั่งอาหารเฉลี่ยประมาณ 3 รายการต่อออเดอร์ โดยมีมูลค่าเฉลี่ยประมาณ 800 บาท
-ข้อมูลแสดงให้เห็นความแตกต่างของพฤติกรรมการใช้จ่าย และพบว่าตัวแปร days_since_last_order มีค่าเฉลี่ยสูง ซึ่งสะท้อนถึงความเสี่ยงในการเกิด churn
-
----
+**4.การทำโมเดล**
+แบ่งข้อมูล Train/Test (Train/Test Split) เพื่อประเมินความสามารถของโมเดลในการทำนายกับข้อมูลใหม่ (generalization)
 
 
 
-```python
-from scipy.stats import norm
 
-# ค่าเฉลี่ยและส่วนเบี่ยงเบน
-mean_active = active_sales.mean()
-mean_inactive = inactive_sales.mean()
+**5.Evaluation**
+ตัวชี้วัดประสิทธิภาพ (Metrics): 
+- Confusion matrix
+- ROC-AUC on test data
 
-std_active = active_sales.std()
-std_inactive = inactive_sales.std()
-
-n_active = active_sales.shape[0]
-n_inactive = inactive_sales.shape[0]
-
-# Standard Error
-se_active = std_active / np.sqrt(n_active)
-se_inactive = std_inactive / np.sqrt(n_inactive)
-
-# ===============================
-# สร้างแกน x สำหรับกราฟ
-# ===============================
-x_min = min(mean_active - 4*se_active, mean_inactive - 4*se_inactive)
-x_max = max(mean_active + 4*se_active, mean_inactive + 4*se_inactive)
-x = np.linspace(x_min, x_max, 500)
-
-# ===============================
-# Normal Distribution
-# ===============================
-y_active = norm.pdf(x, mean_active, se_active)
-y_inactive = norm.pdf(x, mean_inactive, se_inactive)
-
-# ===============================
-# Plot
-# ===============================
-plt.figure(figsize=(8,5))
-plt.plot(x, y_active, label='Active (Sampling Distribution)')
-plt.plot(x, y_inactive, label='Inactive (Sampling Distribution)')
-plt.axvline(mean_active, linestyle='--', label='Active Mean')
-plt.axvline(mean_inactive, linestyle='--', label='Inactive Mean')
-plt.title('T-Test Explanation: Sampling Distribution of Mean Price')
-plt.xlabel('Mean Price')
-plt.ylabel('Density')
-plt.legend()
-plt.show()
-```
-
----
-<img width="730" height="324" alt="{AF1CC214-1CFC-43A2-ABAE-271CF1016DD9}" src="https://github.com/user-attachments/assets/d3c01756-f4e3-4d63-b23c-69d8494941b0" />
-
-The Test 
-การทดสอบนี้ใช้ Independent two-sample, two-tailed t-test
-
-เพื่อเปรียบเทียบ ค่าเฉลี่ยยอดขาย (price) ระหว่างกลุ่มลูกค้า Active และ Inactive
-
-หากค่า p-value < α จะปฏิเสธ H₀
-
-The Result
-T-statistic: -0.7969206171066529
-P-value: 0.4255293665108075
-
-เนื่องจาก p-value (0.426) > 0.05 จึงไม่ปฏิเสธ H₀ และไม่พบความแตกต่างของยอดขายเฉลี่ยระหว่างลูกค้า Active และ Inactive อย่างมีนัยสำคัญ
-
-Churn ไม่ได้ทำให้ยอดซื้อต่อออเดอร์แตกต่างอย่างมีนัยสำคัญ
-
-```python
-# correlation matrix
-corr = numeric_cols.corr()
-
-plt.figure(figsize=(12, 8))
-sns.heatmap(corr, annot=True, cmap='coolwarm', fmt=".2f")
-plt.title("Correlation Heatmap of Numeric Features")
-plt.show()
-```
-<img width="515" height="403" alt="{87984070-BD64-4254-AC00-4B2ECD79CE84}" src="https://github.com/user-attachments/assets/5c4355da-1279-4197-83a3-709e6f0727c4" />
-
-Correlation Heatmap (Numeric Features)
-ตัวแปรเชิงตัวเลขส่วนใหญ่มีค่า correlation ใกล้ 0
-quantity กับ price_per_item มีความสัมพันธ์เชิงลบสูง (≈ -0.66)
-price กับ price_per_item มีความสัมพันธ์เชิงบวกปานกลาง (≈ 0.58)
-ตัวแปรที่เกี่ยวข้องกับ churn (order_frequency, days_since_last_order, loyalty_points)
- ไม่มีความสัมพันธ์เชิงเส้นที่ชัดเจนกับตัวแปรรายได้
-Insight
-พฤติกรรมการซื้อมีความซับซ้อนและไม่เป็นเชิงเส้น
-ลูกค้าที่สั่งจำนวนมากมักเลือกสินค้าราคาต่อชิ้นต่ำ
-มูลค่าการใช้จ่ายต่อออเดอร์ไม่ใช่ตัวขับเคลื่อนหลักของ churn
-Churn มีแนวโน้มถูกอธิบายได้ดีกว่าด้วยพฤติกรรมเชิงเวลาและความถี่ มากกว่ารายได้เพียงอย่างเดียว
-
-<img width="755" height="237" alt="{4D3100A0-FB48-4F66-9BD5-0C1B75BBB874}" src="https://github.com/user-attachments/assets/9cf27620-d207-4848-9b96-d1caa9a51f11" />
-โมเดลทำนาย churn ทุกตัวให้ Accuracy ใกล้เคียงกัน (~55%)
- → ความท้าทายไม่ใช่การทำนายให้ถูกโดยรวม แต่คือการ “จับลูกค้าที่กำลังจะหาย”
-Logistic Regression สามารถตรวจจับลูกค้าที่มีแนวโน้ม churn ได้ดีที่สุด
- → พลาดลูกค้าน้อยที่สุดเมื่อเทียบกับโมเดลอื่น
- → เหมาะกับการนำไปใช้เชิงปฏิบัติ เช่น CRM, Retention Campaign
-โมเดลที่ซับซ้อนกว่า (XGBoost, LightGBM) ไม่ได้สร้างความได้เปรียบเชิงธุรกิจเพิ่ม
- → ต้นทุนความซับซ้อนสูงขึ้น แต่ผลลัพธ์ไม่ดีขึ้นตาม
-
-<img width="691" height="280" alt="{5B5A3C67-E46A-431F-AADA-3E54FF73CDC9}" src="https://github.com/user-attachments/assets/ae58e0bd-2f89-4310-aaa9-5445df23a99a" />
-<img width="671" height="311" alt="{235F3B09-3F59-450F-994D-A9E66BC71CE0}" src="https://github.com/user-attachments/assets/49f07194-d6b5-43e4-9da0-ad7099a30f6a" />
-<img width="667" height="267" alt="{F97EC9C4-533C-4AD2-8D63-64221A9D4F16}" src="https://github.com/user-attachments/assets/4bd036c3-424b-433e-acc9-36d5430f0934" />
-<img width="539" height="455" alt="image" src="https://github.com/user-attachments/assets/1541549b-80eb-4930-8bce-f96aa976ef9c" />
-
-Predictive Results
-
-
-เปรียบเทียบ 4 โมเดล: Logistic Regression, Random Forest, XGBoost, LightGBM
-ทุกโมเดลให้ Accuracy ใกล้เคียงกัน (~55%)
-Logistic Regression ให้ผลดีที่สุด
-Accuracy, Recall (Churn=1) และ F1-score สูงสุด
-False Negative ต่ำสุด → ตรวจจับ churn ได้ดีที่สุด
-โมเดลที่ซับซ้อนกว่า ไม่เพิ่ม predictive power อย่างมีนัยสำคัญ
-
+โดยหลักๆที่เราโฟกัสคือ ค่า Accuracy ของโมเดล 
 
