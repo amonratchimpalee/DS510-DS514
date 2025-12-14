@@ -159,14 +159,15 @@ P-value: 0.4255293665108075
 Churn ไม่ได้ทำให้ยอดซื้อต่อออเดอร์แตกต่างอย่างมีนัยสำคัญ
 
 
-```python
-# correlation matrix
+<img width="523" height="408" alt="{2A0A4B21-AB49-4C55-AA38-C1DCA15866B0}" src="https://github.com/user-attachments/assets/d692fd4b-1253-4c66-9560-16947e36551a" />
+
+```# correlation matrix
 corr = numeric_cols.corr()
 
 plt.figure(figsize=(12, 8))
 sns.heatmap(corr, annot=True, cmap='coolwarm', fmt=".2f")
 plt.title("Correlation Heatmap of Numeric Features")
-plt.show()**
+plt.show()*
 
 
 
