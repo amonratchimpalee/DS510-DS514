@@ -136,6 +136,13 @@ plt.ylabel('Density')
 plt.legend()
 plt.show()
 
+
+---
+
+## ✅ ตัวอย่างที่ถูกต้อง (ก็อปวางได้เลย)
+
+```markdown
+```text
 The Test
 Independent two-sample, two-tailed t-test
 
@@ -155,3 +162,4 @@ There is no statistically significant difference in average order price
 between Active and Inactive customers.
 
 Churn does not significantly affect average order price.
+
