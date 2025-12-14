@@ -61,7 +61,7 @@ https://www.kaggle.com/datasets/nabihazahid/foodpanda-analysis-dataset-2025
 
 
 ---
-** การตรวจสอบและทำความสะอาดข้อมูล**
+**การตรวจสอบและทำความสะอาดข้อมูล**
 
 
 ตรวจสอบชนิดข้อมูลและค่า missing (ไม่พบ missing values)
@@ -79,7 +79,7 @@ https://www.kaggle.com/datasets/nabihazahid/foodpanda-analysis-dataset-2025
 เตรียมข้อมูลให้อยู่ในรูปแบบพร้อมวิเคราะห์และทำโมเดล
 
 
-
+---
 **Descriptive Statistics**
 
 **ผลสถิติพื้นฐานของตัวแปรเชิงตัวเลข: **
@@ -89,6 +89,8 @@ https://www.kaggle.com/datasets/nabihazahid/foodpanda-analysis-dataset-2025
 
 จากการวิเคราะห์สถิติเชิงพรรณนา พบว่าลูกค้าส่วนใหญ่มักสั่งอาหารเฉลี่ยประมาณ 3 รายการต่อออเดอร์ โดยมีมูลค่าเฉลี่ยประมาณ 800 บาท
 ข้อมูลแสดงให้เห็นความแตกต่างของพฤติกรรมการใช้จ่าย และพบว่าตัวแปร days_since_last_order มีค่าเฉลี่ยสูง ซึ่งสะท้อนถึงความเสี่ยงในการเกิด churn
+
+---
 
 <img width="730" height="324" alt="{AF1CC214-1CFC-43A2-ABAE-271CF1016DD9}" src="https://github.com/user-attachments/assets/d3c01756-f4e3-4d63-b23c-69d8494941b0" />
 
