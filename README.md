@@ -192,7 +192,10 @@ Logistic Regression สามารถตรวจจับลูกค้าท
 <img width="691" height="280" alt="{5B5A3C67-E46A-431F-AADA-3E54FF73CDC9}" src="https://github.com/user-attachments/assets/ae58e0bd-2f89-4310-aaa9-5445df23a99a" />
 <img width="671" height="311" alt="{235F3B09-3F59-450F-994D-A9E66BC71CE0}" src="https://github.com/user-attachments/assets/49f07194-d6b5-43e4-9da0-ad7099a30f6a" />
 <img width="667" height="267" alt="{F97EC9C4-533C-4AD2-8D63-64221A9D4F16}" src="https://github.com/user-attachments/assets/4bd036c3-424b-433e-acc9-36d5430f0934" />
+
 Predictive Results
+
+
 เปรียบเทียบ 4 โมเดล: Logistic Regression, Random Forest, XGBoost, LightGBM
 ทุกโมเดลให้ Accuracy ใกล้เคียงกัน (~55%)
 Logistic Regression ให้ผลดีที่สุด
