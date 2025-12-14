@@ -161,7 +161,7 @@ Churn ไม่ได้ทำให้ยอดซื้อต่อออเ�
 
 <img width="523" height="408" alt="{2A0A4B21-AB49-4C55-AA38-C1DCA15866B0}" src="https://github.com/user-attachments/assets/d692fd4b-1253-4c66-9560-16947e36551a" />
 
-```# correlation matrix
+# correlation matrix
 corr = numeric_cols.corr()
 
 plt.figure(figsize=(12, 8))
