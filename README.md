@@ -136,4 +136,22 @@ plt.ylabel('Density')
 plt.legend()
 plt.show()
 
-<img width="730" height="324" alt="Sampling Distribution" src="https://github.com/user-attachments/assets/d3c01756-f4e3-4d63-b23c-69d8494941b0" />
+The Test
+Independent two-sample, two-tailed t-test
+
+Objective:
+Compare average price between Active and Inactive customers
+
+Decision Rule:
+If p-value < α (0.05), reject H₀
+
+The Result
+T-statistic: -0.7969206171066529
+P-value: 0.4255293665108075
+
+Conclusion:
+Since p-value (0.426) > 0.05, we fail to reject H₀.
+There is no statistically significant difference in average order price
+between Active and Inactive customers.
+
+Churn does not significantly affect average order price.
