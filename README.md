@@ -83,12 +83,27 @@ The model uses the following features:
 กำหนดตัวแปรเป้าหมาย  **Target**  = `churn_flag`
 
 **4.การทำโมเดล**
-- แบ่งข้อมูล Train/Test (Train/Test Split) เพื่อประเมินความสามารถของโมเดลในการทำนายกับข้อมูลใหม่ (generalization)
-- Build a scikit-learn Pipeline
-- ทำ GridSearchCV
--Train Model: Random Forest, Logistic Regression, XGBoost และ LightGBM
 
+- แบ่งข้อมูลเป็น Train/Test (Train/Test Split)
+เพื่อประเมินความสามารถของโมเดลในการทำนายกับข้อมูลใหม่ (Generalization)
 
+- สร้าง scikit-learn Pipeline
+รวมขั้นตอนการเตรียมข้อมูล (Preprocessing) และโมเดลเข้าด้วยกัน
+
+- ปรับจูนพารามิเตอร์ด้วย GridSearchCV
+
+- ฝึกโมเดลทำนาย (Train Models)
+
+Logistic Regression
+
+Random Forest
+
+XGBoost
+
+LightGBM
+
+ประเมินและเปรียบเทียบโมเดล (Predictive Model Comparison)
+เปรียบเทียบประสิทธิภาพของโมเดลโดยเน้นค่า Recall สำหรับกลุ่มลูกค้าที่มีการ Churn
 **5.Evaluation**
 ตัวชี้วัดประสิทธิภาพ (Metrics): 
 
